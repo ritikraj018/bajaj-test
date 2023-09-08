@@ -19,13 +19,22 @@ app.post('/bfhl', (req, res) => {
           alpha.push(item);
         }
       });
+
+  const charCodes = [...alpha].map((char) => char.charCodeAt(0));
+
+      // Find the maximum character code
+  const maxCharCode = Math.max(...charCodes);
+
+      // Convert the maximum character code back to a character
+  const maxAlphabet = String.fromCharCode(maxCharCode);
     const response = {
       is_sucess: 'true',
       user_id:'ritik_raj_19022003',
       college_email:'rr4673@srmist.edu.in',
       roll_number:'RA2011003010334',
       numbers:numb,
-      alphabets:alpha
+      alphabets:alpha,
+      highest_alphabet:maxAlphabet
     };
   
     res.json(response);
@@ -44,6 +53,6 @@ app.post('/bfhl', (req, res) => {
     res.json(response);
   });
   
-app.listen(3000, function () {
+app.listen(3001, function () {
     console.log("Server is running on 3000");
 });
